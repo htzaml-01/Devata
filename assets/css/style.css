@@ -2115,3 +2115,264 @@ button, input {
   border: 1.5px solid rgba(255, 255, 255, 0.25);
   background-color: #FFFFFF;
 }
+
+
+/* ==========================================================================
+   Comprehensive Mobile & Tablet Responsive Enhancements
+   ========================================================================== */
+
+/* Tablet & Mobile Adjustments (<= 991px) */
+@media (max-width: 991px) {
+  .hero-fullscreen {
+    min-height: auto;
+    padding: 20px 20px 60px;
+    border-radius: 24px;
+  }
+  
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .about-img {
+    height: 380px;
+  }
+}
+
+/* Mobile Screens (<= 767px) */
+@media (max-width: 767px) {
+  /* Navigation & Top Pill */
+  .hero-wrapper-fullscreen {
+    padding: 10px 10px 0;
+  }
+  
+  .navbar-pill {
+    padding: 8px 14px;
+  }
+  
+  .cart-link {
+    display: none;
+  }
+  
+  .btn-get-started {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+  
+  .brand-logo-img {
+    height: 26px;
+  }
+  
+  .brand-title {
+    font-size: 16px;
+    letter-spacing: 1.5px;
+  }
+
+  .brand-sub {
+    font-size: 7.5px;
+    letter-spacing: 1.2px;
+  }
+
+  /* Hero Typography & CTAs */
+  .hero-fullscreen {
+    padding: 16px 16px 44px;
+    border-radius: 20px;
+  }
+  
+  .hero-title {
+    font-size: clamp(28px, 8vw, 42px);
+    margin-bottom: 18px;
+    line-height: 1.15;
+  }
+  
+  .hero-lead {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 24px !important;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 12px;
+  }
+  
+  .hero-actions .btn-book,
+  .hero-actions .btn-outline {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 14px;
+  }
+
+  /* 4 Why Us Cards */
+  .services-gallery {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .service-gallery-card {
+    height: 320px;
+    border-radius: 20px;
+  }
+  
+  .service-gallery-body {
+    padding: 20px 18px;
+  }
+  
+  .service-gallery-title {
+    font-size: 22px;
+  }
+  
+  .service-gallery-desc {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* About Section */
+  .about-img {
+    height: 260px;
+  }
+  
+  .about-floating-badge {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+    padding: 10px 14px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .about-floating-stat {
+    font-size: 26px;
+  }
+  
+  .about-floating-label {
+    font-size: 11px;
+    text-align: left;
+  }
+
+  /* Process Grid */
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  
+  .process-card {
+    padding: 24px 20px;
+  }
+
+  /* Treatment Cards Grid */
+  .pricelist-section {
+    padding: 50px 0 70px;
+  }
+  
+  .treatment-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .treatment-card-body {
+    padding: 18px 16px;
+  }
+  
+  .treatment-card-title {
+    font-size: 20px;
+  }
+  
+  .treatment-card-img-wrap {
+    height: 180px;
+  }
+  
+  .treatment-durations-row {
+    gap: 6px;
+  }
+  
+  .treatment-duration-chip {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  
+  .treatment-card-footer {
+    padding-top: 12px;
+  }
+  
+  .treatment-card-price strong.selected-price {
+    font-size: 16px;
+  }
+  
+  .btn-card-wa {
+    padding: 8px 15px;
+    font-size: 12.5px;
+    gap: 6px;
+  }
+  
+  .btn-card-wa svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Service Areas */
+  .service-areas-section {
+    padding: 44px 0 !important;
+  }
+
+  /* CTA Box */
+  .cta-box {
+    padding: 38px 18px;
+    border-radius: 20px;
+  }
+  
+  .cta-title {
+    font-size: clamp(24px, 6.5vw, 34px);
+    line-height: 1.2;
+  }
+
+  .cta-desc {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  
+  .cta-box .hero-actions .btn-book {
+    width: 100%;
+    justify-content: center;
+    font-size: 13.5px;
+    padding: 13px 18px;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 48px 16px 28px;
+  }
+  
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 32px;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+  }
+}
+
+/* Extra Small Phones (<= 480px) */
+@media (max-width: 480px) {
+  .btn-get-started {
+    display: none;
+  }
+  
+  .navbar-pill {
+    padding: 7px 12px;
+  }
+  
+  .treatment-card-title {
+    font-size: 19px;
+  }
+}
