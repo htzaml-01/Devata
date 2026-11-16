@@ -5,10 +5,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
-  // Interactive Spa Treatments - Hover Pop-Up Expanding Cards Gallery
-  // =========================================================================
-  // Services Gallery is now a clean 4-card grid without hover accordion
-  // =========================================================================
   // Mobile Drawer Menu
   // =========================================================================
   const mobileToggle = document.getElementById('mobileToggle');
@@ -110,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 • Duration: ${durationMinutes} Minutes (${durationHours})
 • Price: ${price}
 
-Is there an available therapist slot right now? Thank you!`;
+Please let me know therapist availability. Thank you!`;
     return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(message)}`;
   }
 
@@ -124,6 +120,15 @@ Is there an available therapist slot right now? Thank you!`;
     const priceElement = card.querySelector('.selected-price');
     const durLabelElement = card.querySelector('.selected-dur');
     const waBtn = card.querySelector('.btn-card-wa');
+
+    // Initialize WhatsApp button link on page load
+    const initialChip = card.querySelector('.treatment-duration-chip.active') || chips[0];
+    if (initialChip && waBtn) {
+      const initDur = initialChip.getAttribute('data-duration') || '60';
+      const initHrs = initialChip.getAttribute('data-hours') || '1 Hour';
+      const initPrice = initialChip.getAttribute('data-price') || 'IDR 300.000';
+      waBtn.setAttribute('href', createWaBookingUrl(treatmentName, initDur, initHrs, initPrice));
+    }
 
     // Handle duration chip click
     chips.forEach(chip => {
@@ -153,13 +158,27 @@ Is there an available therapist slot right now? Thank you!`;
           durLabelElement.textContent = `${duration} min`;
         }
 
-        // Update WhatsApp button link
+        // Update WhatsApp button link immediately
         const newWaUrl = createWaBookingUrl(treatmentName, duration, hours, price);
         if (waBtn) {
           waBtn.setAttribute('href', newWaUrl);
         }
       });
     });
+
+    // Make sure clicking the Book WA button always uses the fresh active duration & price
+    if (waBtn) {
+      waBtn.addEventListener('click', (e) => {
+        const activeChip = card.querySelector('.treatment-duration-chip.active') || chips[0];
+        if (activeChip) {
+          const duration = activeChip.getAttribute('data-duration') || '60';
+          const hours = activeChip.getAttribute('data-hours') || '1 Hour';
+          const price = activeChip.getAttribute('data-price') || 'IDR 300.000';
+          const freshWaUrl = createWaBookingUrl(treatmentName, duration, hours, price);
+          waBtn.setAttribute('href', freshWaUrl);
+        }
+      });
+    }
 
     // Clicking anywhere on card (except buttons and links) opens WhatsApp with selected duration
     card.addEventListener('click', (e) => {
@@ -176,5 +195,5 @@ Is there an available therapist slot right now? Thank you!`;
     });
   });
 
-  console.log("Devata Spa: Glamour pink accents and WhatsApp auto-text booking ready!");
+  console.log("Devata Spa: Dynamic WhatsApp booking & duration selection active!");
 });
