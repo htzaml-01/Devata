@@ -2136,6 +2136,52 @@ button, input {
 
 /* Tablet & Mobile Adjustments (<= 991px) */
 @media (max-width: 991px) {
+  .nav-desktop-btn,
+  .navbar-pill .btn-get-started,
+  .nav-right .btn-get-started,
+  .cart-link {
+    display: none !important;
+  }
+  .navbar-pill {
+    padding: 8px 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  .brand-logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex-shrink: 0 !important;
+  }
+  .brand-logo-img {
+    height: 32px !important;
+    width: auto !important;
+  }
+  .brand-title {
+    font-size: 17.5px !important;
+    letter-spacing: 1.5px !important;
+    line-height: 1.1 !important;
+  }
+  .brand-sub {
+    font-size: 7.5px !important;
+    letter-spacing: 1.2px !important;
+  }
+  .nav-right {
+    display: flex !important;
+    align-items: center !important;
+    margin-left: auto !important;
+    gap: 0 !important;
+  }
+  .mobile-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: auto !important;
+  }
+}
+
+@media (max-width: 991px) {
   .hero-fullscreen {
     min-height: auto;
     padding: 20px 20px 60px;
@@ -2486,7 +2532,7 @@ button, input {
 
           <!-- Right Controls -->
           <div class="nav-right">
-            <a href="#booking" class="btn-get-started">Book 24/7</a>
+            <a href="#booking" class="btn-get-started nav-desktop-btn">Book 24/7</a>
 
             <!-- Mobile Hamburger Toggle -->
             <button class="mobile-toggle" id="mobileToggle" aria-label="Open mobile navigation">

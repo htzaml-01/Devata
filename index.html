@@ -8,8 +8,56 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261116-v7">
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <!-- Critical Mobile Navbar Overlap Fix -->
+  <style>
+    @media (max-width: 991px) {
+      .navbar-pill {
+        padding: 8px 16px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+      }
+      .navbar-pill .btn-get-started,
+      .nav-right .btn-get-started,
+      .navbar-pill .cart-link,
+      .nav-right .cart-link {
+        display: none !important;
+      }
+      .brand-logo {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        flex-shrink: 0 !important;
+      }
+      .brand-logo-img {
+        height: 32px !important;
+        width: auto !important;
+      }
+      .brand-title {
+        font-size: 17.5px !important;
+        letter-spacing: 1.5px !important;
+        line-height: 1.1 !important;
+      }
+      .brand-sub {
+        font-size: 7.5px !important;
+        letter-spacing: 1.2px !important;
+      }
+      .nav-right {
+        display: flex !important;
+        align-items: center !important;
+        margin-left: auto !important;
+        gap: 0 !important;
+      }
+      .mobile-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-left: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -85,7 +133,7 @@
 
           <!-- Right Controls -->
           <div class="nav-right">
-            <a href="#booking" class="btn-get-started">Book 24/7</a>
+            <a href="#booking" class="btn-get-started nav-desktop-btn">Book 24/7</a>
 
             <!-- Mobile Hamburger Toggle -->
             <button class="mobile-toggle" id="mobileToggle" aria-label="Open mobile navigation">
