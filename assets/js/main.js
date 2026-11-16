@@ -134,12 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const WA_PHONE = '628561611108';
 
   function createWaBookingUrl(treatmentName, durationMinutes, durationHours, price) {
-    const message = `Halo Devata Spa, saya mau booking treatment:
+    const message = `Hello Devata Home Spa, I would like to book a treatment:
 • Treatment: ${treatmentName}
-• Durasi: ${durationMinutes} Menit (${durationHours})
-• Estimasi Tarif: ${price}
+• Duration: ${durationMinutes} Minutes (${durationHours})
+• Price: ${price}
 
-Apakah tersedia slot jadwal kosong? Terima kasih.`;
+Is there an available therapist slot right now? Thank you!`;
     return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(message)}`;
   }
 
@@ -165,7 +165,7 @@ Apakah tersedia slot jadwal kosong? Terima kasih.`;
 
         // Extract duration details
         const duration = chip.getAttribute('data-duration') || '60';
-        const hours = chip.getAttribute('data-hours') || '1 Jam';
+        const hours = chip.getAttribute('data-hours') || '1 Hour';
         const price = chip.getAttribute('data-price') || 'IDR 300.000';
 
         // Update card text
@@ -197,7 +197,7 @@ Apakah tersedia slot jadwal kosong? Terima kasih.`;
       const activeChip = card.querySelector('.treatment-duration-chip.active') || chips[0];
       if (activeChip) {
         const duration = activeChip.getAttribute('data-duration') || '60';
-        const hours = activeChip.getAttribute('data-hours') || '1 Jam';
+        const hours = activeChip.getAttribute('data-hours') || '1 Hour';
         const price = activeChip.getAttribute('data-price') || 'IDR 300.000';
         const waUrl = createWaBookingUrl(treatmentName, duration, hours, price);
         window.open(waUrl, '_blank', 'noopener,noreferrer');
