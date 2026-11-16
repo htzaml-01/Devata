@@ -9,12 +9,15 @@
   /* Brand Color Palette */
   --color-primary: #5F471D;
   --color-primary-dark: #463414;
-  --color-secondary: #FEFAEE;
+  --color-secondary: #FFFFFF;
+  --color-off-white: #FFFFFF;
+  --color-bone-white: #F8F6F2;
+  --color-bone-border: #E8E2D5;
   --color-olive-brown: #7F6C4A;
   --color-brownish-gray: #948468;
   --color-soft-khaki: #B5AA97;
   --color-warm-taupe: #CDC6B9;
-  --color-off-white: #EFEDE8;
+  --color-off-white: #FFFFFF;
   --color-white: #FFFFFF;
   --color-dark: #1F1B16;
   --color-dark-light: #2D2721;
@@ -802,7 +805,7 @@ button, input {
    Section: About Us
    ========================================================================== */
 .about-section {
-  background-color: var(--color-off-white);
+  background-color: #FFFFFF;
   padding: 110px 0;
 }
 
@@ -954,11 +957,11 @@ button, input {
 
 .process-card {
   position: relative;
-  background: var(--color-white);
+  background: var(--color-bone-white);
   border-radius: var(--radius-lg);
   padding: 34px 28px;
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-bone-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
   transition: var(--transition-fast);
 }
 
@@ -1178,9 +1181,9 @@ button, input {
 }
 
 .faq-item {
-  background: var(--color-white);
+  background: var(--color-bone-white);
   border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-bone-border);
   overflow: hidden;
   transition: var(--transition-fast);
 }
@@ -1400,13 +1403,13 @@ button, input {
 
 /* The Individual Card (Matches exact design from uploaded reference) */
 .treatment-card {
-  background-color: var(--color-white);
+  background-color: var(--color-bone-white);
   border-radius: 14px;
-  border: 1px solid #ECE7DF;
+  border: 1px solid var(--color-bone-border);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
   transition: transform 0.35s cubic-bezier(0.25, 1, 0.3, 1),
               box-shadow 0.35s cubic-bezier(0.25, 1, 0.3, 1),
               border-color 0.35s ease;
@@ -1414,8 +1417,8 @@ button, input {
 
 .treatment-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(95, 71, 29, 0.12);
-  border-color: #D9D2C5;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  border-color: #DFD7C8;
 }
 
 /* Image Container */
@@ -1494,7 +1497,7 @@ button, input {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid #F0ECE6;
+  border-top: 1px solid var(--color-bone-border);
   padding-top: 15px;
   margin-top: auto;
 }
@@ -1814,7 +1817,7 @@ button, input {
 }
 
 .treatment-duration-chip {
-  background: #FFF5F8;
+  background: #FFFFFF;
   border: 1.5px solid var(--color-pink-border);
   font-size: 12.5px;
   font-weight: 600;
