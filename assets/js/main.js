@@ -7,36 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // Interactive Spa Treatments - Hover Pop-Up Expanding Cards Gallery
   // =========================================================================
-  const gallery = document.getElementById('servicesGallery');
-  const cards = document.querySelectorAll('.service-gallery-card');
-
-  if (gallery && cards.length > 0) {
-    cards.forEach((card) => {
-      // Mouse Enter / Hover: Pop up and expand this card, shrink others
-      card.addEventListener('mouseenter', () => {
-        cards.forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
-      });
-
-      // Mobile Touch / Click Support
-      card.addEventListener('click', (e) => {
-        // If clicking a link inside, let the link fire
-        if (e.target.closest('a')) return;
-        
-        cards.forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
-      });
-    });
-
-    // Return to the first card if mouse leaves the whole gallery
-    gallery.addEventListener('mouseleave', () => {
-      cards.forEach(c => c.classList.remove('active'));
-      if (cards[0]) {
-        cards[0].classList.add('active');
-      }
-    });
-  }
-
+  // Services Gallery is now a clean 4-card grid without hover accordion
   // =========================================================================
   // Mobile Drawer Menu
   // =========================================================================

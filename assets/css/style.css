@@ -611,67 +611,43 @@ button, input {
   font-weight: 400;
 }
 
-/* Horizontal Expanding Cards Gallery */
+/* 4 Cards Grid - Why Choose Us */
 .services-gallery {
-  display: flex;
-  gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
   width: 100%;
-  height: 480px;
   max-width: 1240px;
   margin: 0 auto;
 }
 
 @media (max-width: 991px) {
   .services-gallery {
-    height: 440px;
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 576px) {
   .services-gallery {
-    flex-direction: column;
-    height: auto;
-    gap: 18px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
-/* Individual Accordion Card */
+/* Individual Card (Static 4 Columns) */
 .service-gallery-card {
   position: relative;
-  flex: 1;
-  height: 100%;
-  border-radius: 28px;
+  height: 440px;
+  border-radius: 24px;
   overflow: hidden;
-  cursor: pointer;
-  background-color: var(--color-primary-dark);
-  transition: flex 0.65s cubic-bezier(0.25, 1, 0.3, 1),
-              transform 0.4s cubic-bezier(0.25, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.25, 1, 0.3, 1);
-  box-shadow: 0 8px 24px rgba(31, 27, 22, 0.1);
+  background-color: var(--color-primary-dark, #1A1A1A);
+  box-shadow: 0 8px 24px rgba(31, 27, 22, 0.08);
 }
 
 @media (max-width: 767px) {
   .service-gallery-card {
-    height: 320px;
-    flex: none;
-    width: 100%;
-  }
-}
-
-/* Pop up / Expand State on Hover & Active */
-.service-gallery-card.active,
-.service-gallery-card:hover {
-  flex: 2.85;
-  transform: translateY(-8px);
-  box-shadow: 0 22px 50px rgba(95, 71, 29, 0.28);
-}
-
-@media (max-width: 767px) {
-  .service-gallery-card.active,
-  .service-gallery-card:hover {
-    flex: none;
-    transform: translateY(-4px);
+    height: 380px;
   }
 }
 
@@ -682,21 +658,14 @@ button, input {
   object-fit: cover;
   position: absolute;
   inset: 0;
-  transition: transform 0.8s cubic-bezier(0.25, 1, 0.3, 1);
 }
 
-.service-gallery-card.active .service-gallery-img,
-.service-gallery-card:hover .service-gallery-img {
-  transform: scale(1.06);
-}
-
-/* Dark Gradient Vignette */
+/* Dark Gradient Vignette for Legibility */
 .service-gallery-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 30%, rgba(20, 16, 12, 0.72) 72%, rgba(20, 16, 12, 0.94) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 25%, rgba(18, 14, 12, 0.65) 60%, rgba(18, 14, 12, 0.94) 100%);
   pointer-events: none;
-  transition: background 0.4s ease;
 }
 
 /* Card Content Container at Bottom */
@@ -705,9 +674,9 @@ button, input {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 28px 26px;
+  padding: 24px 22px;
   z-index: 2;
-  color: var(--color-white);
+  color: var(--color-white, #FFFFFF);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -715,7 +684,7 @@ button, input {
 
 @media (min-width: 992px) {
   .service-gallery-body {
-    padding: 34px 32px;
+    padding: 28px 24px;
   }
 }
 
@@ -723,83 +692,26 @@ button, input {
 .service-gallery-title {
   font-family: var(--font-serif);
   font-size: 24px;
-  font-weight: 400;
-  color: var(--color-white);
-  line-height: 1.15;
-  margin-bottom: 0;
-  white-space: nowrap;
-  transition: margin-bottom 0.4s ease, font-size 0.4s ease;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  font-weight: 500;
+  color: var(--color-white, #FFFFFF);
+  line-height: 1.2;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-.service-gallery-card.active .service-gallery-title,
-.service-gallery-card:hover .service-gallery-title {
-  margin-bottom: 12px;
-  font-size: 32px;
-}
-
-/* Description - expands on active/hover */
+/* Description - Always Visible */
 .service-gallery-desc {
-  font-size: 14.5px;
-  line-height: 1.55;
-  color: var(--color-off-white);
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transform: translateY(12px);
-  transition: opacity 0.4s ease 0.08s, max-height 0.4s ease, transform 0.4s ease 0.08s;
-}
-
-.service-gallery-card.active .service-gallery-desc,
-.service-gallery-card:hover .service-gallery-desc {
-  opacity: 0.95;
-  max-height: 120px;
-  transform: translateY(0);
-}
-
-/* Pop up treatment pill button inside expanded card */
-.service-gallery-cta {
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.35s ease 0.12s, max-height 0.35s ease, transform 0.35s ease 0.12s;
-  margin-top: 0;
-}
-
-.service-gallery-card.active .service-gallery-cta,
-.service-gallery-card:hover .service-gallery-cta {
-  opacity: 1;
-  max-height: 60px;
-  transform: translateY(0);
-  margin-top: 18px;
-}
-
-.btn-service-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background-color: rgba(254, 250, 238, 0.92);
-  color: var(--color-primary);
   font-size: 13.5px;
-  font-weight: 600;
-  padding: 8px 18px;
-  border-radius: var(--radius-pill);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-  transition: var(--transition-fast);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
 }
 
-.btn-service-pill:hover {
-  background-color: var(--color-white);
-  transform: translateY(-2px);
+/* Hide any remaining button if present */
+.service-gallery-cta {
+  display: none !important;
 }
 
-.btn-service-pill svg {
-  width: 13px;
-  height: 13px;
-  stroke: var(--color-primary);
-  stroke-width: 2.2;
-}
 
 /* ==========================================================================
    Section: About Us
