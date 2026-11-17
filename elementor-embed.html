@@ -29,19 +29,10 @@ header.site-header,
 .wp-site-blocks > .entry-header,
 .wpr-page-title-wrap,
 .wpr-archive-title-wrap,
-#colophon,
-footer#colophon,
-body > footer:not(.devata-elementor-wrapper footer),
-footer:not(.devata-elementor-wrapper footer),
 .wpr-sub-footer,
-.wpr-footer,
-.wpr-theme-footer,
-.wpr-copyright {
+.wpr-copyright,
+.wpr-theme-footer {
   display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
 }
 
 /* Force all Elementor & theme containers to full width */
@@ -78,11 +69,20 @@ main {
   padding: 0 !important;
 }
 
+/* Explicitly guarantee Devata Spa footer is ALWAYS visible, full-width, and dark */
+.site-footer,
 .devata-elementor-wrapper .site-footer {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background-color: #181512 !important;
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
+  padding: 80px 24px 36px !important;
   box-sizing: border-box !important;
+  position: relative !important;
+  z-index: 10 !important;
 }
 
 /* ==========================================================================
@@ -2829,8 +2829,7 @@ button, input {
               <span>100% Authentic Balinese Spa Techniques</span>
             </div>
           </div>
-        </div>
-        <a href="#booking" class="btn-get-started" style="padding: 14px 32px; font-size: 15px;">
+          <a href="#booking" class="btn-get-started" style="padding: 14px 32px; font-size: 15px; margin-top: 24px; display: inline-flex;">
             Discover More
           </a>
         </div>
@@ -3604,8 +3603,6 @@ button, input {
           </a>
         </div>
       </div>
-      </div>
-      </div>
     </div>
   </section>
 
@@ -3647,7 +3644,6 @@ button, input {
             <span class="footer-link">As Soon As Possible Dispatch</span>
           </div>
         </div>
-        </div>
 
         <div>
           <h4 class="footer-col-title">Service Areas &amp; Contact</h4>
@@ -3657,7 +3653,6 @@ button, input {
             <span class="footer-link">Gianyar Regency &amp; Ubud</span>
             <span class="footer-link">WhatsApp: +62 856-1611-108</span>
           </div>
-        </div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -3699,46 +3694,18 @@ button, input {
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // =========================================================================
+  // Hide ONLY the WP Royal credit text if present outside Devata Spa
   // =========================================================================
-  // Elementor Full-Screen Breakout & Theme Footer Cleanup
-  // =========================================================================
-  function cleanupThemeElements() {
-    // 1. Remove any external theme footers or WP Royal credits
-    document.querySelectorAll('footer, #colophon, .wpr-sub-footer, .wpr-footer, .wpr-theme-footer, .wpr-copyright').forEach(el => {
-      if (!el.closest('.devata-elementor-wrapper')) {
+  function removeWpRoyalCredit() {
+    document.querySelectorAll('p, div, span').forEach(el => {
+      if (!el.closest('.site-footer') && (el.textContent.includes('WP Royal') || el.textContent.includes('Royal Elementor Kit'))) {
         el.style.setProperty('display', 'none', 'important');
-        try { el.remove(); } catch(e) {}
       }
     });
-
-    // 2. Remove any text containing "WP Royal" or "Royal Elementor Kit"
-    document.querySelectorAll('p, div, span, footer').forEach(el => {
-      if (!el.closest('.devata-elementor-wrapper') && (el.textContent.includes('WP Royal') || el.textContent.includes('Royal Elementor Kit'))) {
-        el.style.setProperty('display', 'none', 'important');
-        try { el.remove(); } catch(e) {}
-      }
-    });
-
-    // 3. Stretch all parent elements to 100% width with 0 margins
-    const wrapper = document.querySelector('.devata-elementor-wrapper');
-    if (wrapper) {
-      let parent = wrapper.parentElement;
-      while (parent && parent !== document.body && parent !== document.documentElement) {
-        parent.style.setProperty('width', '100%', 'important');
-        parent.style.setProperty('max-width', '100%', 'important');
-        parent.style.setProperty('padding-left', '0', 'important');
-        parent.style.setProperty('padding-right', '0', 'important');
-        parent.style.setProperty('margin-left', '0', 'important');
-        parent.style.setProperty('margin-right', '0', 'important');
-        parent = parent.parentElement;
-      }
-    }
   }
-
-  cleanupThemeElements();
-  window.addEventListener('load', cleanupThemeElements);
-  setTimeout(cleanupThemeElements, 300);
-  setTimeout(cleanupThemeElements, 1000);
+  removeWpRoyalCredit();
+  window.addEventListener('load', removeWpRoyalCredit);
 
   // =========================================================================
   // Mobile Drawer Menu
