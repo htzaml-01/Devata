@@ -28,8 +28,41 @@ header.site-header,
 .wp-site-blocks > header,
 .wp-site-blocks > .entry-header,
 .wpr-page-title-wrap,
-.wpr-archive-title-wrap {
+.wpr-archive-title-wrap,
+#colophon,
+footer#colophon,
+body > footer:not(.devata-elementor-wrapper footer),
+footer:not(.devata-elementor-wrapper footer),
+.wpr-sub-footer,
+.wpr-footer,
+.wpr-theme-footer,
+.wpr-copyright {
   display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Force all Elementor & theme containers to full width */
+.elementor,
+.elementor-section-wrap,
+.elementor-container,
+.e-con,
+.e-con-inner,
+.entry-content,
+.site-content,
+.content-area,
+.wpr-container,
+#content,
+#page,
+main {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 /* Force breakout to true 100vw full-screen edge-to-edge without margins */
@@ -43,6 +76,13 @@ header.site-header,
   margin-right: -50vw !important;
   box-sizing: border-box !important;
   padding: 0 !important;
+}
+
+.devata-elementor-wrapper .site-footer {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
 }
 
 /* ==========================================================================
@@ -3659,6 +3699,47 @@ button, input {
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // =========================================================================
+  // Elementor Full-Screen Breakout & Theme Footer Cleanup
+  // =========================================================================
+  function cleanupThemeElements() {
+    // 1. Remove any external theme footers or WP Royal credits
+    document.querySelectorAll('footer, #colophon, .wpr-sub-footer, .wpr-footer, .wpr-theme-footer, .wpr-copyright').forEach(el => {
+      if (!el.closest('.devata-elementor-wrapper')) {
+        el.style.setProperty('display', 'none', 'important');
+        try { el.remove(); } catch(e) {}
+      }
+    });
+
+    // 2. Remove any text containing "WP Royal" or "Royal Elementor Kit"
+    document.querySelectorAll('p, div, span, footer').forEach(el => {
+      if (!el.closest('.devata-elementor-wrapper') && (el.textContent.includes('WP Royal') || el.textContent.includes('Royal Elementor Kit'))) {
+        el.style.setProperty('display', 'none', 'important');
+        try { el.remove(); } catch(e) {}
+      }
+    });
+
+    // 3. Stretch all parent elements to 100% width with 0 margins
+    const wrapper = document.querySelector('.devata-elementor-wrapper');
+    if (wrapper) {
+      let parent = wrapper.parentElement;
+      while (parent && parent !== document.body && parent !== document.documentElement) {
+        parent.style.setProperty('width', '100%', 'important');
+        parent.style.setProperty('max-width', '100%', 'important');
+        parent.style.setProperty('padding-left', '0', 'important');
+        parent.style.setProperty('padding-right', '0', 'important');
+        parent.style.setProperty('margin-left', '0', 'important');
+        parent.style.setProperty('margin-right', '0', 'important');
+        parent = parent.parentElement;
+      }
+    }
+  }
+
+  cleanupThemeElements();
+  window.addEventListener('load', cleanupThemeElements);
+  setTimeout(cleanupThemeElements, 300);
+  setTimeout(cleanupThemeElements, 1000);
+
   // =========================================================================
   // Mobile Drawer Menu
   // =========================================================================
