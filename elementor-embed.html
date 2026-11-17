@@ -12,6 +12,40 @@
   <!-- Inline Scoped Stylesheet -->
   <style>
 /* ==========================================================================
+   Auto-Breakout to 100% Full Screen & Hide WordPress / Royal Elementor Kit Headers & Titles
+   ========================================================================== */
+header.entry-header,
+.entry-title,
+.page-title,
+h1.entry-title,
+.site-header,
+#site-header,
+header.site-header,
+.wp-block-post-title,
+.elementor-page-title,
+.ast-archive-description,
+.entry-content > h1:first-child,
+.wp-site-blocks > header,
+.wp-site-blocks > .entry-header,
+.wpr-page-title-wrap,
+.wpr-archive-title-wrap {
+  display: none !important;
+}
+
+/* Force breakout to true 100vw full-screen edge-to-edge without margins */
+.devata-elementor-wrapper {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  position: relative !important;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+}
+
+/* ==========================================================================
    Devata Massage & Spa - Luxury Spa & Wellness Experience
    Full-Screen Responsive Stylesheet with Interactive Hover Services
    ========================================================================== */
